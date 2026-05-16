@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id')->constrained('users');
             $table->foreignId('vendor_id')->constrained('vendors');
-            $table->foreignId('delivery_boy_id')->nullable()->constrained('users');
+            $table->foreignId('delivery_boy_id')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('status', ['pending', 'accepted', 'assigned', 'out_for_delivery', 'delivered', 'cancelled'])->default('pending');
             $table->enum('payment_mode', ['cod', 'online']);
             $table->enum('payment_status', ['pending', 'paid'])->default('pending');
