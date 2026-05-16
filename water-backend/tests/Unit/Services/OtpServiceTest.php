@@ -18,8 +18,9 @@ it('stores and verifies OTP correctly', function () {
     $otp = $service->generate();
 
     $service->store($phone, $otp);
-    expect($service->verify($phone, $otp))->toBeTrue();
-    expect($service->verify($phone, '000000'))->toBeFalse();
+    expect($service->verify($phone, '000000'))->toBeFalse(); // wrong OTP, cache still present
+    expect($service->verify($phone, $otp))->toBeTrue();      // correct OTP clears cache
+    expect($service->verify($phone, $otp))->toBeFalse();     // cache now gone
 });
 
 it('returns false for expired/missing OTP', function () {
