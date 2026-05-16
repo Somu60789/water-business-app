@@ -36,5 +36,5 @@ class Vendor extends Equatable {
   );
 
   @override
-  List<Object?> get props => [id, businessName, isOpen];
+  List<Object?> get props => [id, userId, businessName, address, lat, lng, serviceRadiusKm, isOpen, distance];
 }

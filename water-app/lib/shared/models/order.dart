@@ -58,7 +58,10 @@ class Order extends Equatable {
     paymentStatus:     json['payment_status'] == 'paid' ? PaymentStatus.paid : PaymentStatus.pending,
     totalAmount:       double.parse(json['total_amount'].toString()),
     deliveryAddressId: json['delivery_address_id'] as int,
-    deliverySlot:      DeliverySlot.values.firstWhere((s) => s.name == json['delivery_slot']),
+    deliverySlot:      DeliverySlot.values.firstWhere(
+  (s) => s.name == json['delivery_slot'],
+  orElse: () => DeliverySlot.morning,
+),
     otp:               json['otp'] as String?,
     notes:             json['notes'] as String?,
     createdAt:         DateTime.parse(json['created_at'] as String),
