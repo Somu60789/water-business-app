@@ -30,7 +30,11 @@ final appRouter = GoRouter(
     GoRoute(path: '/auth/phone', builder: (ctx, _) => const PhoneInputScreen()),
     GoRoute(
       path: '/auth/otp',
-      builder: (ctx, state) => OtpVerifyScreen(phone: state.extra as String),
+      builder: (ctx, state) {
+        final phone = state.extra as String?;
+        if (phone == null) return const PhoneInputScreen();
+        return OtpVerifyScreen(phone: phone);
+      },
     ),
 
     // Customer
