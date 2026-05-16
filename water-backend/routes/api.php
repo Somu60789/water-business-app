@@ -33,4 +33,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/vendor/orders',           [\App\Http\Controllers\Vendor\OrderController::class, 'index']);
         Route::put('/orders/{order}/status',   [\App\Http\Controllers\Vendor\OrderController::class, 'updateStatus']);
     });
+
+    // Delivery boy routes
+    Route::middleware('role:delivery_boy')->group(function () {
+        Route::get('/delivery/orders',                     [\App\Http\Controllers\Delivery\DeliveryController::class, 'index']);
+        Route::put('/delivery/orders/{order}/status',      [\App\Http\Controllers\Delivery\DeliveryController::class, 'updateStatus']);
+        Route::post('/location',                           [\App\Http\Controllers\Delivery\LocationController::class, 'update']);
+        Route::post('/orders/{order}/verify-otp',          [\App\Http\Controllers\Delivery\DeliveryController::class, 'verifyOtp']);
+    });
+
+    // Customer: live tracking
+    Route::middleware('role:customer')->get('/orders/{order}/tracking', [\App\Http\Controllers\Customer\TrackingController::class, 'show']);
 });
