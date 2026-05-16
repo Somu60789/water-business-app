@@ -44,4 +44,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Customer: live tracking
     Route::middleware('role:customer')->get('/orders/{order}/tracking', [\App\Http\Controllers\Customer\TrackingController::class, 'show']);
+
+    // Payment routes (customer)
+    Route::middleware('role:customer')->group(function () {
+        Route::post('/payments/create-order', [\App\Http\Controllers\Customer\PaymentController::class, 'createOrder']);
+        Route::post('/payments/verify',       [\App\Http\Controllers\Customer\PaymentController::class, 'verify']);
+    });
 });

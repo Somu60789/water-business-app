@@ -11,7 +11,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(\App\Services\RazorpayService::class, function () {
+            return new \App\Services\RazorpayService(
+                keyId:     config('services.razorpay.key_id'),
+                keySecret: config('services.razorpay.key_secret'),
+            );
+        });
     }
 
     /**
