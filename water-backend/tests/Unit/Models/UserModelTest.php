@@ -3,7 +3,6 @@
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\Order;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 it('has correct fillable fields', function () {
     $user = new User();
