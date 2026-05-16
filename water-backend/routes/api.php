@@ -20,4 +20,17 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/products/{product}',           [VendorProductController::class, 'update']);
         Route::delete('/products/{product}',        [VendorProductController::class, 'destroy']);
     });
+
+    // Customer orders
+    Route::middleware('role:customer')->group(function () {
+        Route::post('/orders',        [\App\Http\Controllers\Customer\OrderController::class, 'store']);
+        Route::get('/orders',         [\App\Http\Controllers\Customer\OrderController::class, 'index']);
+        Route::get('/orders/{order}', [\App\Http\Controllers\Customer\OrderController::class, 'show']);
+    });
+
+    // Vendor order management
+    Route::middleware('role:vendor')->group(function () {
+        Route::get('/vendor/orders',           [\App\Http\Controllers\Vendor\OrderController::class, 'index']);
+        Route::put('/orders/{order}/status',   [\App\Http\Controllers\Vendor\OrderController::class, 'updateStatus']);
+    });
 });
