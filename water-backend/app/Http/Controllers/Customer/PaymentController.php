@@ -20,7 +20,7 @@ class PaymentController extends Controller
         abort_if($order->customer_id !== $request->user()->id, 403);
 
         $rzpOrder = $this->razorpay->createOrder(
-            (int) ($order->total_amount * 100),
+            (int) round($order->total_amount * 100),
             "order_{$order->id}"
         );
 
@@ -42,6 +42,8 @@ class PaymentController extends Controller
         }
 
         $order = Order::where('razorpay_order_id', $data['razorpay_order_id'])->firstOrFail();
+        abort_if($order->customer_id !== $request->user()->id, 403);
+        abort_if($order->payment_status === 'paid', 409);
         $order->update(['payment_status' => 'paid']);
 
         return response()->json(['success' => true, 'message' => 'Payment verified']);

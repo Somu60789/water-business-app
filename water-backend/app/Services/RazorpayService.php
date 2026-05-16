@@ -16,12 +16,16 @@ class RazorpayService
 
     public function createOrder(int $amountPaise, string $receiptId): array
     {
-        $order = $this->api->order->create([
-            'amount'          => $amountPaise,
-            'currency'        => 'INR',
-            'receipt'         => $receiptId,
-            'payment_capture' => 1,
-        ]);
+        try {
+            $order = $this->api->order->create([
+                'amount'          => $amountPaise,
+                'currency'        => 'INR',
+                'receipt'         => $receiptId,
+                'payment_capture' => 1,
+            ]);
+        } catch (\Exception $e) {
+            throw new \RuntimeException('Razorpay order creation failed: ' . $e->getMessage(), 0, $e);
+        }
 
         return ['razorpay_order_id' => $order->id, 'amount' => $amountPaise];
     }
