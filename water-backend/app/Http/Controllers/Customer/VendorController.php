@@ -10,8 +10,12 @@ class VendorController extends Controller
 {
     public function index(Request $request): \Illuminate\Http\JsonResponse
     {
-        $lat = (float) $request->query('lat', 0);
-        $lng = (float) $request->query('lng', 0);
+        $request->validate([
+            'lat' => ['required', 'numeric', 'between:-90,90'],
+            'lng' => ['required', 'numeric', 'between:-180,180'],
+        ]);
+        $lat = (float) $request->query('lat');
+        $lng = (float) $request->query('lng');
 
         $vendors = Vendor::where('is_open', true)
             ->selectRaw("*, (
