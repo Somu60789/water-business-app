@@ -14,7 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthBloc>().add(const CheckAuthEvent());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) context.read<AuthBloc>().add(const CheckAuthEvent());
+    });
   }
 
   @override

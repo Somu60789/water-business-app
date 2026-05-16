@@ -13,6 +13,7 @@ class OtpVerifyScreen extends StatefulWidget {
 
 class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
   final _controller = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() { _controller.dispose(); super.dispose(); }
@@ -36,31 +37,38 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
             }
           },
           builder: (ctx, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Code sent to +91 ${widget.phone}', style: const TextStyle(color: Colors.grey)),
-                const SizedBox(height: 32),
-                TextField(
-                  controller: _controller,
-                  keyboardType: TextInputType.number,
-                  maxLength: 6,
-                  style: const TextStyle(fontSize: 24, letterSpacing: 8),
-                  decoration: const InputDecoration(labelText: 'Enter 6-digit OTP'),
-                ),
-                const SizedBox(height: 24),
-                if (state is AuthVerifying)
-                  const Center(child: CircularProgressIndicator())
-                else
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_controller.text.length == 6) {
-                        ctx.read<AuthBloc>().add(VerifyOtpEvent(widget.phone, _controller.text));
-                      }
+            return Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Code sent to +91 ${widget.phone}', style: const TextStyle(color: Colors.grey)),
+                  const SizedBox(height: 32),
+                  TextFormField(
+                    controller: _controller,
+                    keyboardType: TextInputType.number,
+                    maxLength: 6,
+                    style: const TextStyle(fontSize: 24, letterSpacing: 8),
+                    decoration: const InputDecoration(labelText: 'Enter 6-digit OTP'),
+                    validator: (v) {
+                      if (v == null || v.length != 6) return 'Enter the 6-digit OTP';
+                      return null;
                     },
-                    child: const Text('Verify'),
                   ),
-              ],
+                  const SizedBox(height: 24),
+                  if (state is AuthVerifying)
+                    const Center(child: CircularProgressIndicator())
+                  else
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          ctx.read<AuthBloc>().add(VerifyOtpEvent(widget.phone, _controller.text));
+                        }
+                      },
+                      child: const Text('Verify'),
+                    ),
+                ],
+              ),
             );
           },
         ),
