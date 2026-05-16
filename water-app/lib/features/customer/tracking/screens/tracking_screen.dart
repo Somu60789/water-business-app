@@ -33,7 +33,10 @@ class _TrackingScreenState extends State<TrackingScreen> {
           _lng = (loc['lng'] as num?)?.toDouble();
         }
       });
-    } catch (_) {}
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _status = 'Unable to fetch status');
+    }
   }
 
   @override

@@ -20,12 +20,19 @@ class _CreateSubscriptionScreenState extends State<CreateSubscriptionScreen> {
   }
 
   Future<void> _submit() async {
+    final qty = int.tryParse(_qtyController.text.trim());
+    if (qty == null || qty < 1) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Enter a valid quantity (minimum 1)')),
+      );
+      return;
+    }
     setState(() => _isLoading = true);
     try {
       await ApiClient.instance.createSubscription({
         'vendor_id':     1,
         'product_id':    1,
-        'qty':           int.parse(_qtyController.text),
+        'qty':           qty,
         'frequency':     _frequency,
         'delivery_slot': _slot,
         'address_id':    1,

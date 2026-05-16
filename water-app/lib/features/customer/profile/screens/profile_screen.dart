@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(24),
             children: [
-              CircleAvatar(radius: 40, child: Text(user.name[0], style: const TextStyle(fontSize: 32))),
+              CircleAvatar(radius: 40, child: Text(user.name.isNotEmpty ? user.name[0].toUpperCase() : '?', style: const TextStyle(fontSize: 32))),
               const SizedBox(height: 16),
               Text(user.name, textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               Text('+91 ${user.phone}', textAlign: TextAlign.center, style: const TextStyle(color: Colors.grey)),
