@@ -56,6 +56,7 @@ class ApiClient {
 
   Future<List<Map<String, dynamic>>> getOrders() async {
     final res = await _dio.get('/orders');
+    // Laravel paginator returns { data: { data: [...], total: N, ... } }
     return List<Map<String, dynamic>>.from(
       ((res.data as Map)['data'] as Map)['data'] as List,
     );
@@ -85,6 +86,7 @@ class ApiClient {
 
   Future<List<Map<String, dynamic>>> getVendorOrders() async {
     final res = await _dio.get('/vendor/orders');
+    // Laravel paginator returns { data: { data: [...], total: N, ... } }
     return List<Map<String, dynamic>>.from(
       ((res.data as Map)['data'] as Map)['data'] as List,
     );
@@ -135,9 +137,7 @@ class ApiClient {
 
   Future<List<Map<String, dynamic>>> getNotifications() async {
     final res = await _dio.get('/notifications');
-    return List<Map<String, dynamic>>.from(
-      ((res.data as Map)['data'] as Map)['data'] as List,
-    );
+    return List<Map<String, dynamic>>.from((res.data as Map)['data'] as List);
   }
 
   Future<void> updateProfile(Map<String, dynamic> payload) async {
