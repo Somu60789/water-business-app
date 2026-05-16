@@ -11,8 +11,11 @@ class OrderController extends Controller
 {
     public function store(PlaceOrderRequest $request): \Illuminate\Http\JsonResponse
     {
-        $items = collect($request->items)->map(function ($item) {
-            $product = Product::findOrFail($item['product_id']);
+        $productIds = collect($request->items)->pluck('product_id');
+        $products   = Product::findMany($productIds)->keyBy('id');
+
+        $items = collect($request->items)->map(function ($item) use ($products) {
+            $product = $products[$item['product_id']];
             return ['product_id' => $product->id, 'qty' => $item['qty'], 'unit_price' => $product->price];
         });
 
@@ -31,7 +34,7 @@ class OrderController extends Controller
 
         $order->items()->createMany($items->toArray());
 
-        return response()->json(['success' => true, 'data' => $order->load('items')], 201);
+        return response()->json(['success' => true, 'data' => $order->load(['items.product', 'vendor'])], 201);
     }
 
     public function index(Request $request): \Illuminate\Http\JsonResponse
@@ -46,9 +49,7 @@ class OrderController extends Controller
 
     public function show(Request $request, Order $order): \Illuminate\Http\JsonResponse
     {
-        if ($order->customer_id !== $request->user()->id) {
-            return response()->json(['success' => false, 'message' => 'Forbidden'], 403);
-        }
+        abort_if($order->customer_id !== $request->user()->id, 403);
 
         return response()->json(['success' => true, 'data' => $order->load(['items.product', 'vendor', 'deliveryBoy'])]);
     }

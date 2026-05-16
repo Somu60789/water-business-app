@@ -10,7 +10,9 @@ class OrderController extends Controller
 {
     public function index(Request $request): \Illuminate\Http\JsonResponse
     {
-        $vendorId = $request->user()->vendor->id;
+        $vendor = $request->user()->vendor;
+        abort_if($vendor === null, 403, 'Vendor profile not found.');
+        $vendorId = $vendor->id;
         $orders   = Order::where('vendor_id', $vendorId)
             ->with(['customer:id,name,phone', 'items.product', 'deliveryAddress'])
             ->latest()
@@ -21,7 +23,9 @@ class OrderController extends Controller
 
     public function updateStatus(UpdateStatusRequest $request, Order $order): \Illuminate\Http\JsonResponse
     {
-        $vendorId = $request->user()->vendor->id;
+        $vendor = $request->user()->vendor;
+        abort_if($vendor === null, 403, 'Vendor profile not found.');
+        $vendorId = $vendor->id;
         if ($order->vendor_id !== $vendorId) {
             return response()->json(['success' => false, 'message' => 'Forbidden'], 403);
         }
