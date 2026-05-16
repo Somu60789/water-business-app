@@ -5,6 +5,9 @@ class EarningsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('EarningsScreen')));
+    return Scaffold(
+      appBar: AppBar(title: const Text('Earnings')),
+      body: const Center(child: Text('Earnings summary coming soon')),
+    );
   }
 }

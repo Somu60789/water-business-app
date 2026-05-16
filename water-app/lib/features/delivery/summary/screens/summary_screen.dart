@@ -5,6 +5,9 @@ class SummaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('SummaryScreen')));
+    return Scaffold(
+      appBar: AppBar(title: const Text('Daily Summary')),
+      body: const Center(child: Text('Daily delivery summary will appear here')),
+    );
   }
 }
