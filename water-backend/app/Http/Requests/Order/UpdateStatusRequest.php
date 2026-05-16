@@ -9,12 +9,18 @@ class UpdateStatusRequest extends FormRequest
 
     public function rules(): array
     {
-        $vendorStatuses   = ['accepted', 'cancelled', 'assigned'];
-        $deliveryStatuses = ['out_for_delivery', 'delivered'];
+        $user = $this->user();
+
+        if ($user && $user->role === 'delivery_boy') {
+            $allowed = ['out_for_delivery', 'delivered'];
+        } else {
+            // vendor (and admin fallback)
+            $allowed = ['accepted', 'cancelled', 'assigned'];
+        }
 
         return [
-            'status'          => ['required', 'in:' . implode(',', array_merge($vendorStatuses, $deliveryStatuses))],
-            'delivery_boy_id' => ['required_if:status,assigned', 'exists:users,id'],
+            'status'          => ['required', 'in:' . implode(',', $allowed)],
+            'delivery_boy_id' => ['required_if:status,assigned', 'nullable', 'exists:users,id'],
         ];
     }
 }
