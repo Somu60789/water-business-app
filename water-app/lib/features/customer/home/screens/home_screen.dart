@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => VendorListCubit(api: ApiClient()),
+      create: (_) => VendorListCubit(api: ApiClient.instance),
       child: const _HomeBody(),
     );
   }
@@ -68,7 +68,7 @@ class _HomeBodyState extends State<_HomeBody> {
               itemBuilder: (_, i) => _VendorCard(vendor: state.vendors[i]),
             );
           }
-          return const SizedBox();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

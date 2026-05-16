@@ -20,12 +20,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final messenger      = ScaffoldMessenger.of(context);
     final router         = GoRouter.of(context);
     try {
-      final cartState = cartCubit.state as CartUpdated;
+      final cartStateRaw = cartCubit.state;
+      if (cartStateRaw is! CartUpdated || cartStateRaw.items.isEmpty) {
+        messenger.showSnackBar(const SnackBar(content: Text('Cart is empty')));
+        setState(() => _isLoading = false);
+        return;
+      }
+      final cartState = cartStateRaw;
       final items = cartState.items.entries
           .map((e) => {'product_id': e.key.id, 'qty': e.value})
           .toList();
 
-      final api = ApiClient();
+      final api = ApiClient.instance;
       await api.placeOrder({
         'vendor_id':     cartState.items.keys.first.vendorId,
         'address_id':    1,
