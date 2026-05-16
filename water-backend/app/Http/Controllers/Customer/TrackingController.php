@@ -13,7 +13,10 @@ class TrackingController extends Controller
 
         $location = null;
         if ($order->delivery_boy_id && $order->status === 'out_for_delivery') {
-            $location = $order->deliveryBoy->location;
+            $order->loadMissing('deliveryBoy.location');
+            $location = $order->deliveryBoy?->location
+                ? ['lat' => $order->deliveryBoy->location->lat, 'lng' => $order->deliveryBoy->location->lng]
+                : null;
         }
 
         return response()->json([

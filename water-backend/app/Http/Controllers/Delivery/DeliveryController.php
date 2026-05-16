@@ -22,7 +22,7 @@ class DeliveryController extends Controller
         abort_if($order->delivery_boy_id !== $request->user()->id, 403);
 
         $data = $request->validate([
-            'status' => ['required', 'in:out_for_delivery,delivered'],
+            'status' => ['required', 'in:out_for_delivery'],
         ]);
 
         $order->update(['status' => $data['status']]);
@@ -35,7 +35,11 @@ class DeliveryController extends Controller
 
         abort_if($order->delivery_boy_id !== $request->user()->id, 403);
 
-        if (! hash_equals($order->otp, $request->otp)) {
+        if (! $order->otp) {
+            return response()->json(['success' => false, 'message' => 'OTP not available for this order'], 422);
+        }
+
+        if (! hash_equals($order->otp, (string) $request->otp)) {
             return response()->json(['success' => false, 'message' => 'Invalid OTP'], 422);
         }
 
