@@ -1,0 +1,50 @@
+<h2>Which technology approach for the Water Delivery App?</h2>
+<p class="subtitle">This affects how many apps you ship, how much it costs to maintain, and developer availability</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Flutter (Recommended)</h3>
+      <p>One codebase → Android + iOS apps. Dart language, fast UI rendering, Google Maps support, great for delivery apps.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>Single codebase for Customer + Vendor apps</li>
+        <li>Faster development, lower cost</li>
+        <li>Used by Papaya Coders quotation (PDF2)</li>
+        <li>Good ecosystem for maps, notifications, WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>React Native</h3>
+      <p>JavaScript/TypeScript codebase → Android + iOS. Large community, easy to find developers, web devs can contribute.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>Same single codebase benefit as Flutter</li>
+        <li>Familiar to JS/web developers</li>
+        <li>Slightly heavier than Flutter at runtime</li>
+        <li>Expo for quick setup</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Native Android (Kotlin + Jetpack Compose)</h3>
+      <p>Android-only app. Best performance, native look. As per PDF1 enterprise recommendation.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>Android-only (no iOS unless separate project)</li>
+        <li>Best performance on Android devices</li>
+        <li>Spring Boot backend recommended alongside</li>
+        <li>Higher cost if iOS needed later</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 24px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid #f59e0b;">
+  <p style="margin:0; font-size:13px; color:#aaa;"><strong style="color:#f59e0b;">Context:</strong> PDF2 (Papaya Coders quotation) suggests Flutter. PDF1 (enterprise doc) suggests Kotlin. For a water delivery app targeting Indian market, Flutter is the practical choice — one codebase, Android + iOS coverage, fast delivery.</p>
+</div>

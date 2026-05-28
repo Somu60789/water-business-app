@@ -1,0 +1,52 @@
+<h2>Which backend for the API?</h2>
+<p class="subtitle">This determines your server language, hosting cost, and developer hiring</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Laravel / PHP (Recommended)</h3>
+      <p>Simpler, faster to build, cheaper to host. Exactly what Papaya Coders quoted. Perfect for a delivery app at this scale.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>PHP developers widely available in India, lower cost</li>
+        <li>Laravel has built-in auth, queues, notifications</li>
+        <li>MySQL database — simple and reliable</li>
+        <li>Can host on shared VPS (₹500–₹2000/month)</li>
+        <li>REST API + Admin Panel in one framework</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Node.js / Express</h3>
+      <p>JavaScript backend — same language family as web. Fast development, huge npm ecosystem, good for real-time features.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>Great for real-time order tracking (Socket.io)</li>
+        <li>JS/TS throughout the stack</li>
+        <li>MongoDB or PostgreSQL</li>
+        <li>Easy to find developers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Spring Boot / Java (Enterprise)</h3>
+      <p>Enterprise-grade. As per PDF1. Overkill for a single delivery app but highly scalable if you plan to expand to many cities/vendors.</p>
+      <ul style="margin-top:8px; padding-left:18px; font-size:13px; color:#aaa;">
+        <li>Microservices architecture — 9 separate services</li>
+        <li>AWS ECS/EC2 deployment required</li>
+        <li>Needs senior Java developers</li>
+        <li>AWS costs ₹10,000–₹15,000/month minimum</li>
+        <li>4–6 month build timeline</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 24px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid #22c55e;">
+  <p style="margin:0; font-size:13px; color:#aaa;"><strong style="color:#22c55e;">Recommendation:</strong> For a water bottle delivery business, Laravel is the right call. You get a working product fast, at low cost. Spring Boot makes sense only if you plan to onboard hundreds of vendors across multiple cities right from day one.</p>
+</div>

@@ -1,0 +1,128 @@
+<h2>Complete App Design — Water Delivery Business</h2>
+<p class="subtitle">My recommendation for a starting water delivery business in India</p>
+
+<!-- Role flows -->
+<div style="display:flex; flex-direction:column; gap:20px;">
+
+  <!-- CUSTOMER -->
+  <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.3); border-radius:12px; padding:16px;">
+    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#22c55e; margin-bottom:12px; font-weight:600;">Customer App Flow</div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Splash / Onboarding</div>
+        <div style="color:#888;">Phone OTP login</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Home Screen</div>
+        <div style="color:#888;">Vendors near me<br>Products banner<br>Active order status</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Product Detail</div>
+        <div style="color:#888;">20L can, 5L, 1L<br>Price per unit<br>Qty selector</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Cart & Checkout</div>
+        <div style="color:#888;">Address picker<br>Delivery time slot<br>COD / Razorpay</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Live Tracking</div>
+        <div style="color:#888;">Delivery boy on map<br>ETA countdown<br>OTP on arrival</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(34,197,94,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#22c55e; font-weight:600; margin-bottom:2px;">Order History</div>
+        <div style="color:#888;">Past orders<br>Reorder 1-tap<br>Invoice download</div>
+      </div>
+    </div>
+    <div style="margin-top:10px; padding:8px 12px; background:rgba(34,197,94,0.08); border-radius:8px; font-size:12px; color:#aaa;">
+      <strong style="color:#22c55e;">Key feature I'm adding:</strong> Subscription Orders — customer sets "deliver 2 cans every Monday". Auto-order, auto-notify vendor. This is the #1 revenue driver for water businesses.
+    </div>
+  </div>
+
+  <!-- VENDOR -->
+  <div style="background:rgba(245,158,11,0.06); border:1px solid rgba(245,158,11,0.3); border-radius:12px; padding:16px;">
+    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#f59e0b; margin-bottom:12px; font-weight:600;">Vendor App Flow</div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+      <div style="background:rgba(245,158,11,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#f59e0b; font-weight:600; margin-bottom:2px;">Dashboard</div>
+        <div style="color:#888;">Today's orders<br>Revenue summary<br>Pending alerts</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(245,158,11,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#f59e0b; font-weight:600; margin-bottom:2px;">Incoming Orders</div>
+        <div style="color:#888;">Accept / Reject<br>Assign delivery boy<br>WhatsApp notify</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(245,158,11,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#f59e0b; font-weight:600; margin-bottom:2px;">My Products</div>
+        <div style="color:#888;">Add/edit products<br>Set price & stock<br>Toggle availability</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(245,158,11,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#f59e0b; font-weight:600; margin-bottom:2px;">Delivery Boys</div>
+        <div style="color:#888;">My team list<br>Today's assignments<br>Live locations</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(245,158,11,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#f59e0b; font-weight:600; margin-bottom:2px;">Earnings</div>
+        <div style="color:#888;">Daily/monthly report<br>COD collected<br>Online payments</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELIVERY BOY -->
+  <div style="background:rgba(168,85,247,0.06); border:1px solid rgba(168,85,247,0.3); border-radius:12px; padding:16px;">
+    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#a855f7; margin-bottom:12px; font-weight:600;">Delivery Boy App Flow</div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+      <div style="background:rgba(168,85,247,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#a855f7; font-weight:600; margin-bottom:2px;">My Deliveries</div>
+        <div style="color:#888;">Today's list<br>Priority order<br>COD amount to collect</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(168,85,247,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#a855f7; font-weight:600; margin-bottom:2px;">Navigate</div>
+        <div style="color:#888;">Google Maps direction<br>Customer phone call<br>Live location ON</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(168,85,247,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#a855f7; font-weight:600; margin-bottom:2px;">Confirm Delivery</div>
+        <div style="color:#888;">OTP from customer<br>Photo proof (optional)<br>Collect COD</div>
+      </div>
+      <span style="color:#555; font-size:18px;">→</span>
+      <div style="background:rgba(168,85,247,0.12); border-radius:8px; padding:8px 12px; font-size:12px; color:#ccc;">
+        <div style="color:#a855f7; font-weight:600; margin-bottom:2px;">Daily Summary</div>
+        <div style="color:#888;">Deliveries done<br>COD collected<br>Online orders</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div style="background:rgba(251,146,60,0.06); border:1px solid rgba(251,146,60,0.3); border-radius:12px; padding:16px;">
+    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#fb923c; margin-bottom:12px; font-weight:600;">Web Admin Panel (for you)</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; font-size:12px; color:#ccc;">
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">📊 Dashboard & Analytics</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">🏪 Manage Vendors</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">👥 Manage Users</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">📦 All Orders</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">🛵 Delivery Boys</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">💰 Payments & Reports</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">🔔 Push Notifications</span>
+      <span style="padding:5px 10px; background:rgba(251,146,60,0.12); border-radius:20px;">🔁 Subscription Orders</span>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:20px; padding:14px 16px; background:rgba(255,255,255,0.04); border-radius:8px; border-left:3px solid #60a5fa;">
+  <p style="margin:0; font-size:13px; color:#aaa;"><strong style="color:#60a5fa;">My top additions beyond the PDF scope:</strong><br>
+  1. <strong>Phone OTP login</strong> (not email — Indian market) via Firebase Auth<br>
+  2. <strong>Subscription orders</strong> (recurring weekly/monthly) — core revenue driver<br>
+  3. <strong>OTP delivery confirmation</strong> — prevents fraud<br>
+  4. <strong>1-tap reorder</strong> from history — reduces friction<br>
+  5. <strong>Delivery time slots</strong> — morning/afternoon/evening slot picker<br>
+  Does this look complete? Let me know in terminal.</p>
+</div>

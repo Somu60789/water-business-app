@@ -1,0 +1,75 @@
+<h2>App Architecture Overview</h2>
+<p class="subtitle">One Flutter app — role at login determines every screen the user sees</p>
+
+<div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+
+  <!-- Flutter App -->
+  <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.05); border-radius:12px; padding:16px; border:1px solid rgba(255,255,255,0.1);">
+    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#60a5fa; margin-bottom:8px;">Flutter App (Single APK)</div>
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <div style="background:rgba(34,197,94,0.15); border:1px solid #22c55e; border-radius:8px; padding:8px 12px; font-size:13px;">
+        <strong style="color:#22c55e;">Customer</strong><br>
+        <span style="color:#aaa; font-size:11px;">Browse → Cart → Order → Track → History</span>
+      </div>
+      <div style="background:rgba(245,158,11,0.15); border:1px solid #f59e0b; border-radius:8px; padding:8px 12px; font-size:13px;">
+        <strong style="color:#f59e0b;">Vendor</strong><br>
+        <span style="color:#aaa; font-size:11px;">Products → Incoming Orders → Manage Status</span>
+      </div>
+      <div style="background:rgba(168,85,247,0.15); border:1px solid #a855f7; border-radius:8px; padding:8px 12px; font-size:13px;">
+        <strong style="color:#a855f7;">Delivery Boy</strong><br>
+        <span style="color:#aaa; font-size:11px;">Assigned Orders → Navigate → Mark Delivered</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div style="display:flex; align-items:center; font-size:24px; color:#555;">⇄</div>
+
+  <!-- Backend -->
+  <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.05); border-radius:12px; padding:16px; border:1px solid rgba(255,255,255,0.1);">
+    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#f87171; margin-bottom:8px;">Laravel REST API</div>
+    <div style="display:flex; flex-direction:column; gap:5px; font-size:12px; color:#ccc;">
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🔐 Auth (JWT + Role)</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🛒 Orders & Cart</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">📦 Products & Vendors</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">📍 Location & Tracking</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">💳 Razorpay + COD</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🔔 Firebase Push + WhatsApp</div>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div style="display:flex; align-items:center; font-size:24px; color:#555;">⇄</div>
+
+  <!-- Data -->
+  <div style="flex:1; min-width:180px; background:rgba(255,255,255,0.05); border-radius:12px; padding:16px; border:1px solid rgba(255,255,255,0.1);">
+    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#34d399; margin-bottom:8px;">Data & Services</div>
+    <div style="display:flex; flex-direction:column; gap:5px; font-size:12px; color:#ccc;">
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🗄️ MySQL Database</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🔥 Firebase FCM</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">🗺️ Google Maps API</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">💬 WhatsApp API</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">💰 Razorpay</div>
+      <div style="padding:5px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">☁️ VPS (₹2000/mo)</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Admin Panel -->
+<div style="background:rgba(255,255,255,0.05); border-radius:12px; padding:14px 16px; border:1px solid rgba(255,255,255,0.1); margin-bottom: 24px;">
+  <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#fb923c; margin-bottom:8px;">Web Admin Panel (Laravel + Blade / React)</div>
+  <div style="display:flex; gap:8px; flex-wrap:wrap; font-size:12px; color:#ccc;">
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Manage Vendors</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Manage Users</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">All Orders</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Products</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Sales Reports</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Notifications</span>
+    <span style="padding:4px 10px; background:rgba(255,255,255,0.06); border-radius:20px;">Delivery Boys</span>
+  </div>
+</div>
+
+<div style="padding: 12px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid #60a5fa;">
+  <p style="margin:0; font-size:13px; color:#aaa;"><strong style="color:#60a5fa;">Does this architecture look right?</strong> Let me know in the terminal and I'll go deeper into the screen flows for each role.</p>
+</div>
